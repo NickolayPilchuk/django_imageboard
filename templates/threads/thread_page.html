@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{thread.text}}</title>
+</head>
+<body>
+<p3>{{thread.time}}</p3>
+<p3>Userid: {{thread.user}}</p3>
+<p>{{thread.text}}</p>
+{% if thread.image %}
+<img src="{{thread.image.url }}" alt="" width="350">
+{% endif %}
+<hr>
+{% for comment in comments %}
+<p>{{comment.time}}</p>
+<p>{{comment.user}}</p>
+<p>{{comment.text}}</p>
+{% if comment.image %}
+<img src="{{comment.image.url }}" alt="" width="350">
+{% endif %}
+<hr>
+{% endfor %}
+<form action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+{{form.as_p}}
+<button type="submit">Опубликовать</button>
+</form>
+</body>
+</html>
